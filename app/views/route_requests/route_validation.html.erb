@@ -6,15 +6,22 @@
       <div class="col-md-offset-1 col-md-5">
         <p>Origin Requested: <%= @origin_formatted_address%></p>
         <p>Departure Time Requested: <%= DateTime.parse(@date_time_departure)%></p>
-        <div id="origin_map" style="width: 360px; height: 360px;"></div>
       </div>
 
       <div class="col-md-5">
         <p>Destination Requested:<%= @destination_formatted_address%></p>
         <p>Estimated Arrival Time: <%=@date_time_arrival_formatted%> </p>
-        <div id="destination_map" style="width: 360px; height: 360px;"></div>
       </div>
 
+    </div>
+
+    <div class="row">
+      <div class="col-md-offset-1 col-md-5">
+        <div id="origin_map" style="width: 360px; height: 360px;"></div>
+      </div>
+      <div class="col-md-5">
+        <div id="destination_map" style="width: 360px; height: 360px;"></div>
+      </div>
     </div>
 
     <div class="row">
@@ -91,6 +98,7 @@ handler_1.buildMap({ provider: {}, internal: {id: 'origin_map'}}, function(){
   ]);
   handler_1.bounds.extendWith(markers);
   handler_1.fitMapToBounds();
+  handler_1.getMap().setZoom(14)
 });
 
 handler_2 = Gmaps.build('Google');
@@ -104,6 +112,7 @@ handler_2.buildMap({ provider: {}, internal: {id: 'destination_map'}}, function(
   ]);
   handler_2.bounds.extendWith(markers);
   handler_2.fitMapToBounds();
+  handler_2.getMap().setZoom(14)
 });
 
 
